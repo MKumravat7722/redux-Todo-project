@@ -6,11 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview --port 5173",
+    "start": "vite preview --port 5173"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.3.0",
+    "axios": "^1.11.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-redux": "^9.1.2"

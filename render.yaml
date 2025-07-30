@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: your-app-name
+    runtime: node
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+    staticSite:
+      buildCommand: npm install && npm run build
+      publishPath: ./dist

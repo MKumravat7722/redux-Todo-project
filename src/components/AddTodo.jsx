@@ -1,16 +1,23 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { addTodo } from '../features/todo/todoSlice';
+import { useDispatch } from 'react-redux'
+import { addTodo } from '../features/todo/todoSlice'
 
 function AddTodo() {
-  const [input, setInput] = useState('');
-  const dispatch = useDispatch();
-  const addTodoHandler = (e) => {
-    e.preventDefault()
-    dispatch(addTodo(input))
-    setInput('')
+  const [input, setInput] = useState('')
+  const dispatch = useDispatch()
 
+  const addTodoHandler = async (e) => {
+    e.preventDefault()
+    if (!input.trim()) return
+
+    try {
+      await dispatch(addTodo(input)).unwrap()
+      setInput('')
+    } catch (error) {
+      console.error('Error adding todo:', error)
+    }
   }
+
   return (
     <form onSubmit={addTodoHandler} className="space-x-3 mt-12">
       <input
